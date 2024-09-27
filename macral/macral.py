@@ -12,7 +12,9 @@ def docx_to_markdown(docx_path):
     full_text = []
     for para in doc.paragraphs:
         full_text.append(para.text)
-    return '\n'.join(full_text)
+    # Convert the plain text to Obsidian readable markdown
+    markdown_text = commonmark.commonmark('\n'.join(full_text))
+    return markdown_text
 
 #Function to process all docx files in a folder
 def process_folder(folder_path):
